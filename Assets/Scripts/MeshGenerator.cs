@@ -11,8 +11,10 @@ public class MeshGenerator : MonoBehaviour
 
     public int xSize = 20;
     public int zSize = 20;
+    public float MeshSize = 1f;
     public float waveSpeed = 1f;
     public float waveHeight = 1f;
+    public float waveLength = .3f;
     float movement = 0f;
 
     // Start is called before the first frame update
@@ -26,6 +28,7 @@ public class MeshGenerator : MonoBehaviour
     void Update()
     {
         movement = movement + (.01f * waveSpeed);
+        transform.position = new Vector3(0-(xSize*MeshSize)/2, 0, 0-(zSize*MeshSize)/2);
         CreateShape(movement);
         UpdateMesh();
     }
@@ -38,8 +41,8 @@ public class MeshGenerator : MonoBehaviour
         {
             for (int x = 0; x <= xSize; x++)
             {
-                float y = Mathf.PerlinNoise((x + movement), (z + movement) * .3f) * 2f * waveHeight;
-                vertices[i] = new Vector3(x, y, z);
+                float y = Mathf.PerlinNoise((x + movement), (z + movement) * waveLength) * 2f * waveHeight;
+                vertices[i] = new Vector3(x * MeshSize, y, z* MeshSize);
                 i++;
             }
         }
