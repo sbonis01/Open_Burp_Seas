@@ -9,13 +9,16 @@ public class MeshGenerator : MonoBehaviour
     Vector3[] vertices;
     int[] triangles;
 
+    public float YPos = 0;
     public int xSize = 20;
     public int zSize = 20;
-    public float MeshSize = 1f;
-    public float waveSpeed = 1f;
-    public float waveHeight = 1f;
-    public float waveLength = .3f;
-    float movement = 0f;
+    public float TriSize = 1f;
+
+
+    public PerlinNoiseGen Filter1;
+    public PerlinNoiseGen Filter2;
+    public PerlinNoiseGen Filter3;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,13 +30,15 @@ public class MeshGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement = movement + (.01f * waveSpeed);
-        transform.position = new Vector3(0-(xSize*MeshSize)/2, 0, 0-(zSize*MeshSize)/2);
-        CreateShape(movement);
+        Filter1.updateMovement();
+        Filter2.updateMovement();
+        Filter3.updateMovement();
+        transform.position = new Vector3(0-(xSize* TriSize) /2, YPos, 0-(zSize* TriSize) /2);
+        CreateShape();
         UpdateMesh();
     }
 
-    void CreateShape(float movement)
+    void CreateShape()
     {
         vertices = new Vector3[(xSize + 1) * (zSize + 1)];
         int i = 0;
@@ -41,8 +46,8 @@ public class MeshGenerator : MonoBehaviour
         {
             for (int x = 0; x <= xSize; x++)
             {
-                float y = Mathf.PerlinNoise((x + movement), (z + movement) * waveLength) * 2f * waveHeight;
-                vertices[i] = new Vector3(x * MeshSize, y, z* MeshSize);
+                float y = Filter1.getPerlin(x, z) + Filter2.getPerlin(x, z) + Filter3.getPerlin(x, z);
+                vertices[i] = new Vector3(x * TriSize, y, z* TriSize);
                 i++;
             }
         }
