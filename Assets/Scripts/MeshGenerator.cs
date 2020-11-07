@@ -9,6 +9,9 @@ public class MeshGenerator : MonoBehaviour
     Vector3[] vertices;
     int[] triangles;
 
+    public bool isColider = false;
+    public bool isStatic = false;
+    bool update = true;
     public float YPos = 0;
     public int xSize = 20;
     public int zSize = 20;
@@ -25,19 +28,33 @@ public class MeshGenerator : MonoBehaviour
     {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
+        
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        Filter1.updateMovement();
-        Filter2.updateMovement();
-        Filter3.updateMovement();
-        transform.position = new Vector3(0-(xSize* TriSize) /2, YPos, 0-(zSize* TriSize) /2);
-        CreateShape();
-        UpdateMesh();
+        if (update)
+        {
+            Filter1.updateMovement();
+            Filter2.updateMovement();
+            Filter3.updateMovement();
+            transform.position = new Vector3(0 - (xSize * TriSize) / 2, YPos, 0 - (zSize * TriSize) / 2);
+            CreateShape();
+            UpdateMesh();
+            if (isColider)
+            {
+                mesh.RecalculateBounds();
+                MeshCollider meshCollider = gameObject.GetComponent<MeshCollider>();
+                meshCollider.sharedMesh = mesh;
+            }
+            if (isStatic)
+            {
+                update = false;
+            }
+        }
     }
-
     void CreateShape()
     {
         vertices = new Vector3[(xSize + 1) * (zSize + 1)];
