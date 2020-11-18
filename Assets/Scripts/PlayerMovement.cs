@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         MoveThePlayer();
     }
 
+
     void MoveThePlayer()
     {
         move_Direction = new Vector3(Input.GetAxis(Axis.HORIZONTAL), 0f, Input.GetAxis(Axis.VERTICAL));

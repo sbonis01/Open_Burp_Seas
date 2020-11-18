@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TimTest.unity
+    guid: 43e8939d8b93e43878a7c1fc8050aed7
   m_configObjects: {}
