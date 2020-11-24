@@ -21,8 +21,8 @@ public class EnemyAi : MonoBehaviour
     bool walkPointSet;
     private float walkPointRange;
 
-    float timeBetweenAttacks=0.5f;
-    bool alreadyAttacked;
+    public float timeBetweenAttacks = 3f;
+    bool alreadyAttacked = false;
     public GameObject projectile;
 
     private bool playerSpotted = false;
@@ -135,26 +135,25 @@ public class EnemyAi : MonoBehaviour
 
         AttackPlayer();
 
-            Patroling();
+        Patroling();
     }
 
     private void ResetAttack()
     {
         alreadyAttacked = false;
     }
+
     private void AttackPlayer()
     {
         //agent.SetDestination(transform.position);
         transform.LookAt(player);
         if (!alreadyAttacked)
         {
-            //player = GameObject.Find("Player").transform;
-            //player.parent.GetComponentInChildren<PlayerHealth>().TakeDamage(1);
-            //Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            //rb.AddForce(transform.forward * 8f, ForceMode.Impulse);
-            //rb.AddForce(transform.up * 13f, ForceMode.Impulse);
-            //alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * 13f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            player.GetComponentInChildren<PlayerHealth>().TakeDamage(1);
+            
         }
     }
 

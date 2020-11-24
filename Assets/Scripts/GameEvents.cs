@@ -13,15 +13,17 @@ public class GameEvents : MonoBehaviour
 
     void Update()
            {
-       
+            
             if (slider.value == 0 && (nextlvl-2) > 0){
                     SceneManager.LoadScene("Scene" + (nextlvl-2).ToString());
-            }else if(slider.value == 0 && (nextlvl - 2) == 0)
+            }else if(slider.value == 0 && (nextlvl - 1) == 0)
             {
-                SceneManager.LoadScene("Scene1");
+                SceneManager.LoadScene("TimTest");
             }
             scenemover.text = (nextlvl - 1).ToString();
      }
+
+ 
 
     void OnTriggerEnter(Collider other)
     {
@@ -31,6 +33,9 @@ public class GameEvents : MonoBehaviour
         
             SceneManager.LoadScene("Scene"+ nextlvl);
 
+        }else if (other.gameObject.tag == "Ocean")
+        {
+            SceneManager.LoadScene("TimTest");
         }
     }
 }

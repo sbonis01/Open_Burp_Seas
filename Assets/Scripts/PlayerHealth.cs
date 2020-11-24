@@ -20,10 +20,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(2);
-        }else if (Input.GetKeyDown(KeyCode.Escape))
+         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
@@ -34,10 +31,6 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.tag == "Bullet")
         {
             TakeDamage(2);
-        }else if(other.gameObject.tag == "HealthPack"){
-            addHealth(2);
-            other.gameObject.SetActive(false);
-            print("here");
         }
     }
 
