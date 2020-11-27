@@ -27,11 +27,9 @@ public class EnemyAiHealth : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        print(other.gameObject.tag);
-        if (other.gameObject.tag == "Bullet" )
-        {
+        
             TakeDamage(2);
-        }
+        
     }
 
     public void TakeDamage(int damage)
