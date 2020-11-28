@@ -49,15 +49,16 @@ public class MouseLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LockAndUnlockCursor();
 
-        if(Cursor.lockState == CursorLockMode.Locked)
+        //LockAndUnlockCursor();
+
+        if (Cursor.lockState == CursorLockMode.Locked)
         {
             lookAround();
         }
     }
 
-    void LockAndUnlockCursor()
+    public void LockAndUnlockCursor()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {

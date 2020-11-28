@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5675819443864390727}
   - component: {fileID: 8913652157403753068}
   - component: {fileID: 8584546210885152028}
-  - component: {fileID: 2833418019456347809}
   - component: {fileID: -8066536062713088375}
+  - component: {fileID: 3135635718304860009}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -81,19 +81,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &2833418019456347809
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7155962188318137861}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-8066536062713088375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,3 +95,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 30
   duration: 2
+--- !u!64 &3135635718304860009
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7155962188318137861}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}

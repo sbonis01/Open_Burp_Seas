@@ -8,6 +8,7 @@ public class EnterShip : MonoBehaviour
     private bool inVehicle = false;
     public DriveShip vehicleScript;
     public GameObject player;
+    public Transform Ship;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class EnterShip : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
+                Ship.GetComponent<MeshCollider>().convex = true;
                 Debug.Log("E has been pressed");
                 CarCam.SetActive(true);
                 player.transform.parent = gameObject.transform;
@@ -43,6 +45,7 @@ public class EnterShip : MonoBehaviour
     { 
         if (inVehicle == true && Input.GetKeyDown(KeyCode.R))
         {
+            Ship.GetComponent<MeshCollider>().convex = false;
             CarCam.SetActive(false);
             vehicleScript.enabled = false;
             player.SetActive(true);

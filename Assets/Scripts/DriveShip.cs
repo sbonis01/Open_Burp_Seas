@@ -13,7 +13,8 @@ public class DriveShip: MonoBehaviour
     private void Awake()
     {
 
-       Ship = Ship.GetComponent<Transform>();        
+       Ship = Ship.GetComponent<Transform>();
+       
     }
     private void Update()
     {

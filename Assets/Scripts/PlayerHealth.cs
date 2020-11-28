@@ -18,20 +18,13 @@ public class PlayerHealth : MonoBehaviour
         healthbar.setMaxHealth(maxHealth);
     }
 
-    void Update()
-    {
-         if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
-    }
     void OnTriggerEnter(Collider other)
     {
-        print(other.gameObject.tag);
-        if (other.gameObject.tag == "Bullet")
-        {
+        //print(other.tag);
+        //if (other.tag == "Bullet")
+        //{
             TakeDamage(2);
-        }
+        //}
     }
 
     public void TakeDamage(int damage)

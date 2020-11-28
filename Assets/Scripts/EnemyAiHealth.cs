@@ -7,8 +7,8 @@ public class EnemyAiHealth : MonoBehaviour
 {
 
     public int maxHealth = 10;
+    public GameObject player;
     public int currentHealth;
-
     public HealthBar healthbar;
 
     // Start is called before the first frame update
@@ -17,18 +17,22 @@ public class EnemyAiHealth : MonoBehaviour
         currentHealth = maxHealth;
         healthbar.setMaxHealth(maxHealth);
     }
-
-    void Update()
+    private void Update()
     {
-         if (Input.GetKeyDown(KeyCode.Escape))
+        if(currentHealth == 0)
         {
-            Application.Quit();
+            Destroy(player);
         }
     }
+
     void OnTriggerEnter(Collider other)
     {
-        
+        Debug.Log("collisions");
+        if (other.gameObject.tag == "Bullet")
+        {
+            Debug.Log("collision bullet");
             TakeDamage(2);
+        }
         
     }
 
