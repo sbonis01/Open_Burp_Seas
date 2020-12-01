@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
         //print(other.tag);
         //if (other.tag == "Bullet")
         //{
-            TakeDamage(2);
+            //TakeDamage(2);
         //}
     }
 

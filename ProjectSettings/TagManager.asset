@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - Ocean
   - PShip
+  - flag
+  - CannonBall
   layers:
   - Default
   - TransparentFX
