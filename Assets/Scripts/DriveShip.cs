@@ -16,32 +16,33 @@ public class DriveShip: MonoBehaviour
        Ship = Ship.GetComponent<Transform>();
        
     }
-    private void Update()
-    {
-        //float h = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
-        //float v = Input.GetAxis("Vertical") * accelerateSpeed * Time.deltaTime;
-        //Debug.Log("Horizontal" + h);
-        //Debug.Log("Vertical" + v);
-        //Debug.Log(Ship.position);
-    }
+  
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         if (Input.GetKey(KeyCode.W))
         {
-            Ship.position += new Vector3(0f, 0f, -1);
-        }else if (Input.GetKey(KeyCode.S))
+            Ship.transform.position -= new Vector3(Input.GetAxis("Horizontal") * 3, 0, Input.GetAxis("Vertical") * 2);
+            
+        }
+        else if (Input.GetKey(KeyCode.S))
         {
-            Ship.position += new Vector3(0f, 0f, 1);
-        }else if (Input.GetKey(KeyCode.D))
+            Ship.transform.position += new Vector3(-Input.GetAxis("Horizontal") * 3, 0, -Input.GetAxis("Vertical") * 2);
+        }
+        else if (Input.GetKey(KeyCode.D))
         {
-            Ship.position += new Vector3(1, 0f, 0f);
-            Ship.transform.Rotate(Vector3.down * turnSpeed * Time.deltaTime);
+            Ship.transform.localEulerAngles += new Vector3(0f, 1, 0f);
+            Ship.position += new Vector3(-1, 0f, 0f);
+            //Ship.transform.Rotate(transform.localEulerAngles.x, transform.localEulerAngles.y-turnSpeed, transform.localEulerAngles.z);
+            //transform.localEulerAngles.y.set(transform.localEulerAngles.y - turnSpeed);
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            Ship.position += new Vector3(-1, 0f, 0f);
-            Ship.transform.Rotate(-Vector3.down * turnSpeed * Time.deltaTime);
+           
+            Ship.transform.localEulerAngles += new Vector3(0f, -1, 0f);
+            Ship.position += new Vector3(1, 0f, 0f);
+            //Ship.transform.Rotate(transform.localEulerAngles.x, transform.localEulerAngles.y+turnSpeed, transform.localEulerAngles.z);
         }
 
     }

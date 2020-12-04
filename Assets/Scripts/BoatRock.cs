@@ -24,8 +24,8 @@ public class BoatRock : MonoBehaviour
 
         var rotationVector = transform.rotation.eulerAngles;
         rotationVector.x = -90 + rockDegrees * (Mathf.Sin(rockSpeed * (randomiser + Time.time)));
-        rotationVector.y = 90;
-        rotationVector.z = -90;
-        transform.rotation = Quaternion.Euler(rotationVector);
+        //rotationVector.y = 90;
+        //rotationVector.z = -90;
+        //transform.rotation = Quaternion.Euler(rotationVector);
     }
 }
