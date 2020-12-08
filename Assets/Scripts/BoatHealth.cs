@@ -11,28 +11,32 @@ public class BoatHealth : MonoBehaviour
     public GameObject player;
     public int currentHealth;
     public HealthBar healthbar;
+    public TextMeshProUGUI shipsdestoryed;
     Animator m_animator;
-    public TextMeshProUGUI ScoreText;
+    public int counter;
     // Start is called before the first frame update
     void Start()
     {
+        counter = 0;
         m_animator = GetComponent<Animator>();
         currentHealth = maxHealth;
         healthbar.setMaxHealth(maxHealth);
-   
+        textsetter script = shipsdestoryed.GetComponent<textsetter>();
+
     }
-    private void Update()
+
+    public void Update()
     {
         if(currentHealth < 0)
-        {
-            
+        {      
             if (!functionCalled)
             {
-                //Debug.Log("setting text");
-                //ScoreText.GetComponent<TextMeshProUGUI>().SetText((int.Parse(ScoreText.text) + 1).ToString());
+                counter++;
+                Debug.Log("Counter = " + counter + "setting counter in textsetter");
+                shipsdestoryed.GetComponent<textsetter>().counter += counter;
                 functionCalled = true;
             }
-            Debug.Log("running animation");
+            //Debug.Log("running animation");
             m_animator.SetTrigger("sink");
 
             //Destroy(player);

@@ -255,6 +255,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.1042175, y: 2.1020572, z: 4.8595934}
   m_Center: {x: -0.0039485097, y: -0.002482414, z: -0.23431942}
+--- !u!64 &56325470
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56325464}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2534964839176971238, guid: 45e744c0af675493e96188ed2771155e, type: 3}
 --- !u!1 &59070613
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,7 +572,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: d3d85cc02de51499cbaa591c8298d486, type: 2}
 --- !u!65 &109772504
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -762,7 +776,8 @@ MonoBehaviour:
   player: {fileID: 157954870}
   currentHealth: 30
   healthbar: {fileID: 747779956}
-  ScoreText: {fileID: 377849790}
+  shipsdestoryed: {fileID: 377849790}
+  counter: 0
 --- !u!95 &157954874
 Animator:
   serializedVersion: 3
@@ -1315,7 +1330,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 10e61104933af4c2baca2eeed5a48b98, type: 2}
 --- !u!65 &276210279
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1550,6 +1565,7 @@ MonoBehaviour:
   playerCamera: {fileID: 1143980848}
   bulletPrefab: {fileID: 5525100949248821303, guid: 1c1c98c64ba154e7890fdc427cbfc9a3,
     type: 3}
+  finished: 0
 --- !u!114 &286567138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1629,20 +1645,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2534964839176971238, guid: 7120d85eedf1a488f80b7ed0aca35936, type: 3}
---- !u!114 &287541884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 287541879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6e1b845e683d483ea4dbd50b636e9aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textMeshPro: {fileID: 377849790}
-  flag: {fileID: 1722573460}
 --- !u!54 &287541885
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2230,20 +2232,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1223829972}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &349230253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 349230251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6e1b845e683d483ea4dbd50b636e9aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textMeshPro: {fileID: 377849790}
-  flag: {fileID: 389751098}
 --- !u!64 &349230254
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2377,6 +2365,7 @@ GameObject:
   - component: {fileID: 377849789}
   - component: {fileID: 377849791}
   - component: {fileID: 377849790}
+  - component: {fileID: 377849792}
   m_Layer: 5
   m_Name: ShipsDestroyedTMP
   m_TagString: Untagged
@@ -2400,7 +2389,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 363, y: 206}
+  m_AnchoredPosition: {x: 299, y: 206}
   m_SizeDelta: {x: 200, y: 40.58333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &377849790
@@ -2499,6 +2488,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377849788}
   m_CullTransparentMesh: 0
+--- !u!114 &377849792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377849788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18da401ec7e5749859cd04f834fffe7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counter: 0
+  shipswrecked: {fileID: 377849790}
 --- !u!1 &382072075
 GameObject:
   m_ObjectHideFlags: 0
@@ -3087,7 +3090,13 @@ PrefabInstance:
       propertyPath: gradient.ctime4
       value: 57440
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8186367850247233303, guid: bc51939e7865541799928eaa1e8e4c6e,
+        type: 3}
+      propertyPath: ScoreText
+      value: 
+      objectReference: {fileID: 377849790}
+    m_RemovedComponents:
+    - {fileID: 8186367850247233303, guid: bc51939e7865541799928eaa1e8e4c6e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bc51939e7865541799928eaa1e8e4c6e, type: 3}
 --- !u!1 &411168196
 GameObject:
@@ -3333,7 +3342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 400
   currentHealth: 400
-  healthbar: {fileID: 601231380}
+  healthbar: {fileID: 2061431028}
 --- !u!114 &420503362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3347,20 +3356,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 421463156}
---- !u!114 &420503364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420503354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6e1b845e683d483ea4dbd50b636e9aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textMeshPro: {fileID: 377849790}
-  flag: {fileID: 1722573460}
 --- !u!1 &421463156
 GameObject:
   m_ObjectHideFlags: 0
@@ -4026,20 +4021,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2065659564}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &503512467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 503512465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6e1b845e683d483ea4dbd50b636e9aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textMeshPro: {fileID: 377849790}
-  flag: {fileID: 1503133069}
 --- !u!64 &503512468
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4377,7 +4358,8 @@ MonoBehaviour:
   player: {fileID: 566872369}
   currentHealth: 30
   healthbar: {fileID: 890645028}
-  ScoreText: {fileID: 377849790}
+  shipsdestoryed: {fileID: 377849790}
+  counter: 0
 --- !u!95 &566872373
 Animator:
   serializedVersion: 3
@@ -4547,20 +4529,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 880212535}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &574710051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574710049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6e1b845e683d483ea4dbd50b636e9aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textMeshPro: {fileID: 377849790}
-  flag: {fileID: 685727975}
 --- !u!64 &574710052
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4761,18 +4729,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592330283}
   m_CullTransparentMesh: 0
---- !u!114 &601231380 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8186367850247233303, guid: bc51939e7865541799928eaa1e8e4c6e,
-    type: 3}
-  m_PrefabInstance: {fileID: 408531333}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef40747ee4bb24c9d828e8ffa7ed609c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &607637114 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8693052639428352371, guid: 7223f813450764649a464ff5e4eb44d8,
@@ -4821,7 +4777,8 @@ MonoBehaviour:
   player: {fileID: 611895548}
   currentHealth: 30
   healthbar: {fileID: 1973379562}
-  ScoreText: {fileID: 377849790}
+  shipsdestoryed: {fileID: 377849790}
+  counter: 0
 --- !u!95 &611895552
 Animator:
   serializedVersion: 3
@@ -5082,7 +5039,8 @@ MonoBehaviour:
   player: {fileID: 663026254}
   currentHealth: 30
   healthbar: {fileID: 1623556239}
-  ScoreText: {fileID: 377849790}
+  shipsdestoryed: {fileID: 377849790}
+  counter: 0
 --- !u!114 &663026257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5787,7 +5745,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: a1c15b7412cf74654a033f4025b51816, type: 2}
 --- !u!65 &747328742
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6390,20 +6348,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 437393361}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &829873264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 829873262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6e1b845e683d483ea4dbd50b636e9aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textMeshPro: {fileID: 377849790}
-  flag: {fileID: 207208611}
 --- !u!64 &829873265
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7027,20 +6971,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 404482986}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &859115730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 859115728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6e1b845e683d483ea4dbd50b636e9aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textMeshPro: {fileID: 377849790}
-  flag: {fileID: 576046518}
 --- !u!64 &859115731
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7249,6 +7179,7 @@ MonoBehaviour:
   playerCamera: {fileID: 938652463}
   bulletPrefab: {fileID: 5525100949248821303, guid: 1c1c98c64ba154e7890fdc427cbfc9a3,
     type: 3}
+  finished: 0
 --- !u!95 &865886488
 Animator:
   serializedVersion: 3
@@ -7949,6 +7880,7 @@ MonoBehaviour:
   playerCamera: {fileID: 2136988680}
   bulletPrefab: {fileID: 5525100949248821303, guid: 1c1c98c64ba154e7890fdc427cbfc9a3,
     type: 3}
+  finished: 0
 --- !u!1 &974793254
 GameObject:
   m_ObjectHideFlags: 0
@@ -8733,7 +8665,8 @@ MonoBehaviour:
   player: {fileID: 1053992855}
   currentHealth: 30
   healthbar: {fileID: 59070615}
-  ScoreText: {fileID: 377849790}
+  shipsdestoryed: {fileID: 377849790}
+  counter: 1
 --- !u!54 &1053992858
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8889,7 +8822,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 5b8e48558e40d4596b7395d5165d0bd7, type: 2}
 --- !u!65 &1081989079
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10108,20 +10041,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1812695039}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1225582071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1225582069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6e1b845e683d483ea4dbd50b636e9aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textMeshPro: {fileID: 377849790}
-  flag: {fileID: 1460036968}
 --- !u!64 &1225582072
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11177,7 +11096,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7cc52d180c2fc41e3851efc043e20f51, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.477
+  m_Volume: 0.047
   m_Pitch: 0.55
   Loop: 1
   Mute: 0
@@ -11457,6 +11376,7 @@ MonoBehaviour:
   playerCamera: {fileID: 2114965147}
   bulletPrefab: {fileID: 5525100949248821303, guid: 1c1c98c64ba154e7890fdc427cbfc9a3,
     type: 3}
+  finished: 0
 --- !u!114 &1335735347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11645,6 +11565,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   theDest: {fileID: 1018128904}
   player: {fileID: 420503354}
+--- !u!64 &1337274242
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337274235}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2534964839176971238, guid: 45e744c0af675493e96188ed2771155e, type: 3}
 --- !u!1 &1338535754
 GameObject:
   m_ObjectHideFlags: 0
@@ -12426,7 +12360,8 @@ MonoBehaviour:
   player: {fileID: 1498785013}
   currentHealth: 30
   healthbar: {fileID: 1956291934}
-  ScoreText: {fileID: 377849790}
+  shipsdestoryed: {fileID: 377849790}
+  counter: 0
 --- !u!95 &1498785017
 Animator:
   serializedVersion: 3
@@ -13013,7 +12948,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 408531333}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2061431026}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
@@ -13693,7 +13628,8 @@ MonoBehaviour:
   player: {fileID: 1665286240}
   currentHealth: 30
   healthbar: {fileID: 1136698198}
-  ScoreText: {fileID: 377849790}
+  shipsdestoryed: {fileID: 377849790}
+  counter: 0
 --- !u!95 &1665286244
 Animator:
   serializedVersion: 3
@@ -13883,6 +13819,7 @@ MonoBehaviour:
   playerCamera: {fileID: 674966669}
   bulletPrefab: {fileID: 5525100949248821303, guid: 1c1c98c64ba154e7890fdc427cbfc9a3,
     type: 3}
+  finished: 0
 --- !u!1 &1738887137
 GameObject:
   m_ObjectHideFlags: 0
@@ -15112,7 +15049,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 890b5090d41444058817a022fcead960, type: 2}
 --- !u!65 &1913833634
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15719,7 +15656,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 86f94d9d3e688489aafeacba70761cf6, type: 2}
 --- !u!65 &1964183551
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16442,6 +16379,102 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rockSpeed: 0.6
   rockDegrees: 4
+--- !u!82 &2021311667
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021311662}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2022524339
 GameObject:
   m_ObjectHideFlags: 0
@@ -16508,6 +16541,7 @@ MonoBehaviour:
   playerCamera: {fileID: 1627676252}
   bulletPrefab: {fileID: 5525100949248821303, guid: 1c1c98c64ba154e7890fdc427cbfc9a3,
     type: 3}
+  finished: 0
 --- !u!114 &2024386064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16773,6 +16807,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060399422}
   m_CullTransparentMesh: 0
+--- !u!1 &2061431026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8186367850247233297, guid: bc51939e7865541799928eaa1e8e4c6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 408531333}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2061431028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061431026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef40747ee4bb24c9d828e8ffa7ed609c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 59070616}
+  gradient:
+    serializedVersion: 2
+    key0: {r: 0.76161444, g: 0.98770404, b: 0.990566, a: 1}
+    key1: {r: 0.21333215, g: 0.7121965, b: 0.9622642, a: 1}
+    key2: {r: 0.033018887, g: 0.12499025, b: 1, a: 0}
+    key3: {r: 1, g: 1, b: 1, a: 0}
+    key4: {r: 1, g: 1, b: 1, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 23130
+    ctime1: 47031
+    ctime2: 50115
+    ctime3: 48959
+    ctime4: 57440
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 1
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
+  fill: {fileID: 2020433681}
 --- !u!1 &2063500796
 GameObject:
   m_ObjectHideFlags: 0

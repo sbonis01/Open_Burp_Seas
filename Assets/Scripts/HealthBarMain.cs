@@ -1,15 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
-public class HealthBar : MonoBehaviour
+public class HealthBarMain : MonoBehaviour
 {
     // Start is called before the first frame update
     public Slider slider;
     public Gradient gradient;
     public Image fill;
+    public int kills;
+    public TextMeshProUGUI ScoreText;
+
+    private void Start()
+    {
+        kills = 0;
+    }
+    public void FixedUpdate()
+    {
+        ScoreText.SetText(kills.ToString());
+    }
 
     public void setMaxHealth(int health)
     {
