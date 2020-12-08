@@ -27,7 +27,7 @@ public class EnemyAiHealth : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collisions");
+    
         if (other.gameObject.tag == "Bullet")
         {
             Debug.Log("collision bullet");

@@ -10,6 +10,7 @@ TagManager:
   - PShip
   - flag
   - CannonBall
+  - Compass
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,6 @@ using TMPro;
 public class BoatHealth : MonoBehaviour
 {
     private bool functionCalled;
-    private int kills;
     public int maxHealth = 10;
     public GameObject player;
     public int currentHealth;
@@ -17,19 +16,20 @@ public class BoatHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        kills = 1;
         m_animator = GetComponent<Animator>();
         currentHealth = maxHealth;
         healthbar.setMaxHealth(maxHealth);
+   
     }
     private void Update()
     {
         if(currentHealth < 0)
         {
+            
             if (!functionCalled)
             {
-                ScoreText.text = kills.ToString();
-                kills++;
+                //Debug.Log("setting text");
+                //ScoreText.GetComponent<TextMeshProUGUI>().SetText((int.Parse(ScoreText.text) + 1).ToString());
                 functionCalled = true;
             }
             Debug.Log("running animation");
