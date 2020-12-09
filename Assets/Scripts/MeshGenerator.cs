@@ -19,6 +19,7 @@ public class MeshGenerator : MonoBehaviour
     public float TriSize = 1f;
 
 
+    public Transform player = null;
     public PerlinNoiseGen Filter1;
     public PerlinNoiseGen Filter2;
     public PerlinNoiseGen Filter3;
@@ -43,7 +44,14 @@ public class MeshGenerator : MonoBehaviour
             Filter3.updateMovement();
             if (!menu)
             {
-                transform.position = new Vector3(0 - (xSize * TriSize) / 2, YPos, 0 - (zSize * TriSize) / 2);
+                if (player != null)
+                {
+                    transform.position = new Vector3(player.position.x - (xSize * TriSize) / 2, YPos, player.position.z - (zSize * TriSize) / 2);
+                }
+                else
+                {
+                    transform.position = new Vector3(0 - (xSize * TriSize) / 2, YPos, 0 - (zSize * TriSize) / 2);
+                }
             }
             CreateShape();
             UpdateMesh();
@@ -58,6 +66,7 @@ public class MeshGenerator : MonoBehaviour
                 update = false;
             }
         }
+
     }
     void CreateShape()
     {
@@ -68,7 +77,7 @@ public class MeshGenerator : MonoBehaviour
             for (int x = 0; x <= xSize; x++)
             {
                 float y = Filter1.getPerlin(x, z) + Filter2.getPerlin(x, z) + Filter3.getPerlin(x, z);
-                vertices[i] = new Vector3(x * TriSize, y, z* TriSize);
+                vertices[i] = new Vector3(0 + (x * TriSize), y, 0 + (z* TriSize));
                 i++;
             }
         }

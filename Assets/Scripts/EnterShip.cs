@@ -10,11 +10,16 @@ public class EnterShip : MonoBehaviour
     public GameObject player;
     public Transform Ship;
 
+    public GameObject img;
+    public GameObject img2;
+
     void Start()
     {
         Debug.Log("entercannon-script started");
         vehicleScript = GetComponent<DriveShip>();
         player = GameObject.FindWithTag("Player");
+        img.SetActive(false);
+        img2.SetActive(false);
     }
 
     // Update is called once per frame
@@ -24,6 +29,8 @@ public class EnterShip : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
+                img.SetActive(true);
+                img2.SetActive(true);
                 Ship.GetComponent<MeshCollider>().convex = true;
                 Debug.Log("E has been pressed");
                 CarCam.SetActive(true);
@@ -38,6 +45,8 @@ public class EnterShip : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            img.SetActive(false);
+            img2.SetActive(false);
             Debug.Log("exitting");
         }
     }

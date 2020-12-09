@@ -13,6 +13,11 @@ public class PerlinNoiseGen : MonoBehaviour
 
 
 
+    public float getPerlin(float x, float z)
+    {
+        return Mathf.PerlinNoise((x + movementX) * Size, (z + movementZ) * Size) * Height;
+    }
+
     public float getPerlin(int x, int z)
     {
         return Mathf.PerlinNoise((x + movementX) * Size, (z + movementZ) * Size) * Height;

@@ -5,12 +5,14 @@ using UnityEngine;
 public class OpenMiniMap : MonoBehaviour
 {
     public GameObject img;
+    public GameObject img2;
     public bool isImgOn;
     public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         img.SetActive(false);
+        img2.SetActive(false);
         isImgOn = false;
         player = GameObject.FindWithTag("Player");
     }
@@ -22,6 +24,7 @@ public class OpenMiniMap : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             img.SetActive(true);
+            img2.SetActive(true);
         }
     }
 
@@ -30,6 +33,7 @@ public class OpenMiniMap : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             img.SetActive(false);
+            img2.SetActive(false);
         }
     }
 }
