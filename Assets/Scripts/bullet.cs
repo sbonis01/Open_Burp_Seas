@@ -18,7 +18,6 @@ public class bullet : MonoBehaviour
     void Update()
     {
         transform.position += transform.forward * speed * Time.deltaTime;
-
         lifeTimer -= Time.deltaTime;
         if(lifeTimer <= 0f)
         {

@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TeamLogo.unity
     guid: 216bf055f3be74dcebd02d29b7178bd7
   - enabled: 1
