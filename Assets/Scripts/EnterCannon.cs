@@ -21,6 +21,7 @@ public class EnterCannon : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && inVehicle == false)
         {
+
             if (Input.GetKey(KeyCode.E))
             {
                 Debug.Log("E has been pressed");
