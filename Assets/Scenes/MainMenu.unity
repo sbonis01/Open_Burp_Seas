@@ -360,6 +360,7 @@ MonoBehaviour:
   xSize: 68
   zSize: 47
   TriSize: 20.08
+  player: {fileID: 0}
   Filter1: {fileID: 192255006}
   Filter2: {fileID: 192255005}
   Filter3: {fileID: 192255004}
@@ -3015,6 +3016,7 @@ MonoBehaviour:
   xSize: 91
   zSize: 106
   TriSize: 5.15
+  player: {fileID: 0}
   Filter1: {fileID: 1967080295}
   Filter2: {fileID: 1967080294}
   Filter3: {fileID: 1967080293}
@@ -3036,7 +3038,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9251f7607593b43c6963dbd13f9559a3, type: 2}
+  - {fileID: 2100000, guid: 7e7410ac4530a4a43b2b38c4c8179096, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

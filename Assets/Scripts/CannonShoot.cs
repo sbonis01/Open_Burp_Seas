@@ -20,8 +20,6 @@ public class CannonShoot : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I) && finished == true)
         {
-
-          
             StartCoroutine(ExampleCoroutine());
         }
      
@@ -38,7 +36,5 @@ public class CannonShoot : MonoBehaviour
         yield return new WaitForSeconds(1);
         finished = true;
         //yield on a new YieldInstruction that waits for 5 seconds.
-
-
     }
 }
