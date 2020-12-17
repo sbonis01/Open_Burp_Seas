@@ -8,41 +8,99 @@ public class DriveShip: MonoBehaviour
     public float accelerateSpeed = 100f;
 
     public Transform Ship;
+    public float speed = .003f;
     private float v, h;
+    private float RotationY, velocity, rotationV;
     // Start is called before the first frame update
     private void Awake()
     {
-
        Ship = Ship.GetComponent<Transform>();
-       
+       RotationY = Ship.rotation.y;
+       velocity = 0f;
+       rotationV = 0f;
     }
   
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        var rotationVector = Ship.rotation.eulerAngles;
+        rotationVector.y += rotationV;
+        RotationY += rotationV;
+        Ship.rotation = Quaternion.Euler(rotationVector);
+
+
+
+        float shipZ = velocity * Mathf.Cos(RotationY * Mathf.Deg2Rad);
+        float shipX = velocity * Mathf.Sin(RotationY * Mathf.Deg2Rad);
+        Ship.transform.position -= new Vector3(shipX, 0, shipZ);
+
+        if (velocity >= 0f)
+        {
+            velocity -= speed/15;
+        }
+
+        if (rotationV > 0f)
+        {
+            rotationV -= .001f;
+        }
+
+        if (rotationV < 0f)
+        {
+            rotationV += .001f;
+        }
+
         if (Input.GetKey(KeyCode.W))
         {
-            Ship.transform.position -= new Vector3(Input.GetAxis("Horizontal") * 3, 0, Input.GetAxis("Vertical") * 2);
-            
+            //float shipZ = Mathf.Cos(RotationY* Mathf.Deg2Rad);
+            //float shipX = Mathf.Sin(RotationY* Mathf.Deg2Rad);
+            //Ship.transform.position -= new Vector3(shipX, 0, shipZ);
+            if(velocity < .5f)
+            {
+                velocity += speed;
+            }
+
+            //Ship.transform.position -= new Vector3(Input.GetAxis("Horizontal") * 3, 0, Input.GetAxis("Vertical") * 2);
+            //Ship.transform.position -= new Vector3(Input.GetAxis("Horizontal") * 3, 0, Input.GetAxis("Vertical") * 2);
+
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            Ship.transform.position += new Vector3(-Input.GetAxis("Horizontal") * 3, 0, -Input.GetAxis("Vertical") * 2);
+            if (velocity >= 0f)
+            {
+                velocity -= speed;
+            }
+            //Ship.transform.position += new Vector3(-Input.GetAxis("Horizontal") * 3, 0, -Input.GetAxis("Vertical") * 2);
         }
-        else if (Input.GetKey(KeyCode.D))
+
+        if (Input.GetKey(KeyCode.D))
         {
-            Ship.transform.localEulerAngles += new Vector3(0f, 1, 0f);
-            Ship.position += new Vector3(-1, 0f, 0f);
-            //Ship.transform.Rotate(transform.localEulerAngles.x, transform.localEulerAngles.y-turnSpeed, transform.localEulerAngles.z);
-            //transform.localEulerAngles.y.set(transform.localEulerAngles.y - turnSpeed);
+            if (rotationV > 0f)
+            {
+                rotationV -= .02f;
+            }
+            if (rotationV > -2f)
+            {
+                rotationV -= .01f;
+            }
+            //var rotationVector = Ship.rotation.eulerAngles;
+            //rotationVector.y -= .2f;
+            //RotationY -= .2f;
+            //Ship.rotation = Quaternion.Euler(rotationVector);
         }
         else if (Input.GetKey(KeyCode.A))
         {
-           
-            Ship.transform.localEulerAngles += new Vector3(0f, -1, 0f);
-            Ship.position += new Vector3(1, 0f, 0f);
-            //Ship.transform.Rotate(transform.localEulerAngles.x, transform.localEulerAngles.y+turnSpeed, transform.localEulerAngles.z);
+            if (rotationV < 0f)
+            {
+                rotationV += .02f;
+            }
+            if (rotationV < 2f)
+            {
+                rotationV += .01f;
+            }
+            //var rotationVector = Ship.rotation.eulerAngles;
+            //rotationVector.y += .2f;
+            //RotationY += .2f;
+            //Ship.rotation = Quaternion.Euler(rotationVector);
         }
 
     }

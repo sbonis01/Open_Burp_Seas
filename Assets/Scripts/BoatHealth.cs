@@ -32,7 +32,7 @@ public class BoatHealth : MonoBehaviour
             if (!functionCalled)
             {
                 counter++;
-                Debug.Log("Counter = " + counter + "setting counter in textsetter");
+                //Debug.Log("Counter = " + counter + "setting counter in textsetter");
                 shipsdestoryed.GetComponent<textsetter>().counter += counter;
                 functionCalled = true;
             }
@@ -45,16 +45,16 @@ public class BoatHealth : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collisions");
-        Debug.Log(other.gameObject.tag);
+        //Debug.Log("collisions");
+        //Debug.Log(other.gameObject.tag);
         if (other.gameObject.tag == "Bullet")
         {
-            Debug.Log("collision bullet");
+            //Debug.Log("collision bullet");
             TakeDamage(2);
         }
         if(other.gameObject.tag == "CannonBall")
         {
-            Debug.Log("cannon ball hit");
+            //Debug.Log("cannon ball hit");
             TakeDamage(2);
         }
         

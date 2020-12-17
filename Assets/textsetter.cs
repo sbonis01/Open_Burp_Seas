@@ -17,7 +17,7 @@ public class textsetter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("counter in textsetter is" + counter);
+        //Debug.Log("counter in textsetter is" + counter);
         shipswrecked.text = counter.ToString();
     }
 }

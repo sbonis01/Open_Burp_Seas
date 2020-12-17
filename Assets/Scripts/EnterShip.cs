@@ -8,6 +8,8 @@ public class EnterShip : MonoBehaviour
     private bool inVehicle = false;
     public DriveShip vehicleScript;
     public GameObject player;
+    public GameObject text;
+    public GameObject text2;
     public Transform Ship;
 
     public GameObject img;
@@ -15,11 +17,13 @@ public class EnterShip : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("entercannon-script started");
+        //Debug.Log("entercannon-script started");
         vehicleScript = GetComponent<DriveShip>();
         player = GameObject.FindWithTag("Player");
         img.SetActive(false);
         img2.SetActive(false);
+        text.SetActive(false);
+        text2.SetActive(false);
     }
 
     // Update is called once per frame
@@ -27,12 +31,15 @@ public class EnterShip : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && inVehicle == false)
         {
+            text.SetActive(true);
             if (Input.GetKey(KeyCode.E))
             {
+                text.SetActive(false);
+                text2.SetActive(true);
                 img.SetActive(true);
                 img2.SetActive(true);
                 Ship.GetComponent<MeshCollider>().convex = true;
-                Debug.Log("E has been pressed");
+                //Debug.Log("E has been pressed");
                 CarCam.SetActive(true);
                 player.transform.parent = gameObject.transform;
                 vehicleScript.enabled = true;
@@ -47,13 +54,15 @@ public class EnterShip : MonoBehaviour
         {
             img.SetActive(false);
             img2.SetActive(false);
-            Debug.Log("exitting");
+            text.SetActive(false);
+            //Debug.Log("exitting");
         }
     }
     void Update()
     { 
         if (inVehicle == true && Input.GetKeyDown(KeyCode.R))
         {
+            text2.SetActive(false);
             Ship.GetComponent<MeshCollider>().convex = false;
             CarCam.SetActive(false);
             vehicleScript.enabled = false;

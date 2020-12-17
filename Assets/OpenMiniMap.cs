@@ -20,7 +20,7 @@ public class OpenMiniMap : MonoBehaviour
     // Update is called once per frame
    void OnTriggerStay(Collider other)
     {
-        Debug.Log("collided and here");
+        //Debug.Log("collided and here");
         if(other.gameObject.tag == "Player")
         {
             img.SetActive(true);
