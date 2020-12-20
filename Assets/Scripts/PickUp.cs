@@ -33,7 +33,7 @@ public class PickUp : MonoBehaviour
 
             this.transform.parent = null;
             this.GetComponent<Rigidbody>().useGravity = true;
-            //this.GetComponent<MeshCollider>().enabled = true;
+            this.GetComponent<MeshCollider>().enabled = true;
 
 
         }

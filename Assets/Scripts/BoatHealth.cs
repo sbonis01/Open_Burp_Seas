@@ -50,7 +50,7 @@ public class BoatHealth : MonoBehaviour
         if (other.gameObject.tag == "Bullet")
         {
             //Debug.Log("collision bullet");
-            TakeDamage(2);
+            TakeDamage(1);
         }
         if(other.gameObject.tag == "CannonBall")
         {

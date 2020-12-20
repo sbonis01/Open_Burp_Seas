@@ -11,7 +11,7 @@ public class EnterShip : MonoBehaviour
     public GameObject text;
     public GameObject text2;
     public Transform Ship;
-
+    private bool sinkn = false;
     public GameObject img;
     public GameObject img2;
 
@@ -58,8 +58,19 @@ public class EnterShip : MonoBehaviour
             //Debug.Log("exitting");
         }
     }
+
+    public void sinking()
+    {
+        sinkn = true;
+    }
+
     void Update()
-    { 
+    {
+        if(sinkn)
+        {
+            text2.SetActive(false);
+            return;
+        }
         if (inVehicle == true && Input.GetKeyDown(KeyCode.R))
         {
             text2.SetActive(false);

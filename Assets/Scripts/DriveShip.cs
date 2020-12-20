@@ -8,7 +8,7 @@ public class DriveShip: MonoBehaviour
     public float accelerateSpeed = 100f;
 
     public Transform Ship;
-    public float speed = .003f;
+    public float speed = .001f;
     private float v, h;
     private float RotationY, velocity, rotationV;
     // Start is called before the first frame update
@@ -34,10 +34,10 @@ public class DriveShip: MonoBehaviour
         float shipX = velocity * Mathf.Sin(RotationY * Mathf.Deg2Rad);
         Ship.transform.position -= new Vector3(shipX, 0, shipZ);
 
-        if (velocity >= 0f)
-        {
-            velocity -= speed/15;
-        }
+        //if (velocity >= 0f)
+        //{
+        //    velocity -= speed/50;
+        //}
 
         if (rotationV > 0f)
         {
@@ -54,9 +54,13 @@ public class DriveShip: MonoBehaviour
             //float shipZ = Mathf.Cos(RotationY* Mathf.Deg2Rad);
             //float shipX = Mathf.Sin(RotationY* Mathf.Deg2Rad);
             //Ship.transform.position -= new Vector3(shipX, 0, shipZ);
-            if(velocity < .5f)
+            if (velocity < .2f)
             {
-                velocity += speed;
+                velocity += speed / 10f;
+            }
+            else if (velocity < .7f)
+            {
+                velocity += speed/3f;
             }
 
             //Ship.transform.position -= new Vector3(Input.GetAxis("Horizontal") * 3, 0, Input.GetAxis("Vertical") * 2);
@@ -67,7 +71,7 @@ public class DriveShip: MonoBehaviour
         {
             if (velocity >= 0f)
             {
-                velocity -= speed;
+                velocity -= speed/30f;
             }
             //Ship.transform.position += new Vector3(-Input.GetAxis("Horizontal") * 3, 0, -Input.GetAxis("Vertical") * 2);
         }
@@ -78,7 +82,7 @@ public class DriveShip: MonoBehaviour
             {
                 rotationV -= .02f;
             }
-            if (rotationV > -2f)
+            if (rotationV > -.5f)
             {
                 rotationV -= .01f;
             }
@@ -93,7 +97,7 @@ public class DriveShip: MonoBehaviour
             {
                 rotationV += .02f;
             }
-            if (rotationV < 2f)
+            if (rotationV < .5f)
             {
                 rotationV += .01f;
             }
