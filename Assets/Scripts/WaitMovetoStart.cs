@@ -11,8 +11,8 @@ public class WaitMovetoStart : MonoBehaviour
     void Start()
     {
         StartCoroutine(ExampleCoroutine());
-  
     }
+
 
     IEnumerator ExampleCoroutine()
     {

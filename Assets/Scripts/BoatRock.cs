@@ -19,13 +19,13 @@ public class BoatRock : MonoBehaviour
 
     void FixedUpdate()
     {
-        //Vector3 newRotation = startRotation + new Vector3(, 90, -90);
+        //Vector3 newRotation = startRotation + new Vector3(-90, 90, -90);
         //this.transform.rotation = newRotation;
 
-        var rotationVector = transform.rotation.eulerAngles;
-        rotationVector.x = -90 + rockDegrees * (Mathf.Sin(rockSpeed * (randomiser + Time.time)));
+        //var rotationVector = transform.rotation.eulerAngles;
+        //rotationVector.x = -90 + rockDegrees * (Mathf.Sin(rockSpeed * (randomiser + Time.time)));
         //rotationVector.y = 90;
         //rotationVector.z = -90;
-        //transform.rotation = Quaternion.Euler(rotationVector);
+        //this.transform.rotation = Quaternion.Euler(rotationVector);
     }
 }

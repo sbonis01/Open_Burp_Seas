@@ -14,6 +14,8 @@ public class MainMenuScene : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         obj1.SetActive(false);
         obj2.SetActive(false);
         obj3.SetActive(false);
@@ -50,6 +52,8 @@ public class MainMenuScene : MonoBehaviour
     public void LoadScene()
     {
         //Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         SceneManager.LoadScene("TimTest");
     }
     public void Tutorial()

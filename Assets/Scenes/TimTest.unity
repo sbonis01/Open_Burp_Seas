@@ -1049,7 +1049,7 @@ MeshCollider:
   m_GameObject: {fileID: 156928655}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -4321,6 +4321,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 421463156}
+--- !u!114 &420503363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420503354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5220955f973ad4aceba6813c67d0afb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &421463156
 GameObject:
   m_ObjectHideFlags: 0
