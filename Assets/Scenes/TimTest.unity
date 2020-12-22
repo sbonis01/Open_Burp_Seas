@@ -1034,7 +1034,7 @@ GameObject:
   - component: {fileID: 156928657}
   - component: {fileID: 156928656}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: WaterLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1048,10 +1048,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156928655}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &156928657
@@ -1109,7 +1109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156928655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.0210905, y: 5.53, z: 24.229399}
+  m_LocalPosition: {x: 14.0210905, y: 3.3, z: 24.229399}
   m_LocalScale: {x: 1000, y: 1, z: 1000}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1189,8 +1189,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9, y: 21.72, z: 5}
-  m_Center: {x: -0.19077611, y: -3, z: 2.6}
+  m_Size: {x: 9, y: 19.52795, z: 9.704267}
+  m_Center: {x: -0.19077629, y: -4.096026, z: 4.9521327}
 --- !u!54 &157954876
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1520,6 +1520,11 @@ PrefabInstance:
     - target: {fileID: 2972821316278457523, guid: 834f710fc881a4af782050c8d6ad58cc,
         type: 3}
       propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972821316278457524, guid: 834f710fc881a4af782050c8d6ad58cc,
+        type: 3}
+      propertyPath: drown
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2972821316278457525, guid: 834f710fc881a4af782050c8d6ad58cc,
@@ -4263,6 +4268,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 175699045}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &420503357 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2972821316278457524, guid: 834f710fc881a4af782050c8d6ad58cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 175699045}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420503354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31313f31624bc4e5cbab6e6ba82100b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!143 &420503358 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 2972821316278457526, guid: 834f710fc881a4af782050c8d6ad58cc,
+    type: 3}
+  m_PrefabInstance: {fileID: 175699045}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &420503359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4305,8 +4328,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a594d54d55451413cbb4b8e02e84d38b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 400
-  currentHealth: 400
+  maxHealth: 30
+  currentHealth: 30
+  drown: 0
+  player: {fileID: 420503358}
   healthbar: {fileID: 2061431028}
 --- !u!114 &420503362
 MonoBehaviour:
@@ -4333,6 +4358,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5220955f973ad4aceba6813c67d0afb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 420503361}
+  player: {fileID: 420503357}
 --- !u!1 &421463156
 GameObject:
   m_ObjectHideFlags: 0
@@ -5202,8 +5229,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9, y: 21.72, z: 5}
-  m_Center: {x: -0.19077611, y: -3, z: 2.6}
+  m_Size: {x: 9, y: 21.72, z: 9.469074}
+  m_Center: {x: -0.19077629, y: -3.0000002, z: 4.8345385}
 --- !u!54 &566872375
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5715,8 +5742,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9, y: 21.72, z: 5}
-  m_Center: {x: -0.19077611, y: -3, z: 2.6}
+  m_Size: {x: 9, y: 19.780893, z: 9.469076}
+  m_Center: {x: -0.19077629, y: -3.9695532, z: 4.83454}
 --- !u!54 &611895554
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6127,8 +6154,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9, y: 21.72, z: 5}
-  m_Center: {x: -0.19077611, y: -3, z: 2.6}
+  m_Size: {x: 9, y: 21.72, z: 10.52753}
+  m_Center: {x: -0.19077627, y: -3.0000002, z: 5.363764}
 --- !u!54 &663026260
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13798,6 +13825,68 @@ Transform:
   m_Father: {fileID: 856598412}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1409851345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1409851348}
+  - component: {fileID: 1409851347}
+  - component: {fileID: 1409851346}
+  m_Layer: 9
+  m_Name: Under Water
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1409851346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409851345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 7c07ace3433c647af8ba785b49ddd6de, type: 2}
+  isGlobal: 0
+  blendDistance: 8.5
+  weight: 1
+  priority: 0
+--- !u!65 &1409851347
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409851345}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1409851348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409851345}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 166.26778, y: -57.48, z: 0}
+  m_LocalScale: {x: 4000, y: 98.9, z: 4000}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1419767137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14276,8 +14365,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9, y: 21.72, z: 5}
-  m_Center: {x: -0.19077611, y: -3, z: 2.6}
+  m_Size: {x: 9, y: 21.72, z: 9.821875}
+  m_Center: {x: -0.19077629, y: -3.0000002, z: 5.0109363}
 --- !u!54 &1498785019
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14668,7 +14757,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -294}
+  m_AnchoredPosition: {x: -49, y: -222}
   m_SizeDelta: {x: 249.03705, y: 79.55658}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1549139121
@@ -14690,7 +14779,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press 'R' to Exit
+  m_text: 'Press ''I'' to Fire Cannons
+
+
+    Press ''R'' to Exit'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
   m_sharedMaterial: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
@@ -14753,7 +14845,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -56.247852, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -16002,8 +16094,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9, y: 21.72, z: 5}
-  m_Center: {x: -0.19077611, y: -3, z: 2.6}
+  m_Size: {x: 9, y: 19.696686, z: 9.469055}
+  m_Center: {x: -0.19077629, y: -4.0116515, z: 4.834525}
 --- !u!54 &1665286246
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19431,7 +19523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef40747ee4bb24c9d828e8ffa7ed609c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 59070616}
+  slider: {fileID: 1597648334}
   gradient:
     serializedVersion: 2
     key0: {r: 0.76161444, g: 0.98770404, b: 0.990566, a: 1}
