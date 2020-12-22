@@ -14,6 +14,8 @@ public class BoatHealth : MonoBehaviour
     public TextMeshProUGUI shipsdestoryed;
     Animator m_animator;
     public int counter;
+    public ParticleSystem boom;
+    private Transform boompos;  
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +47,8 @@ public class BoatHealth : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        GameObject gHit = other.gameObject;
+        Transform tHit = gHit.transform;
         //Debug.Log("collisions");
         //Debug.Log(other.gameObject.tag);
         if (other.gameObject.tag == "Bullet")
@@ -55,6 +59,12 @@ public class BoatHealth : MonoBehaviour
         if(other.gameObject.tag == "CannonBall")
         {
             //Debug.Log("cannon ball hit");
+            Instantiate(boom);
+            boompos = boom.GetComponent<Transform>();
+            boompos.position = new Vector3(tHit.position.x,
+                                        tHit.position.y,
+                                        tHit.position.z);
+            boom.Play();
             TakeDamage(2);
         }
         
